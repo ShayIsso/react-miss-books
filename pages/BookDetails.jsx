@@ -1,3 +1,4 @@
+import { BookPrice } from "../cmps/BookPrice.jsx"
 import { PageCount } from "../cmps/PageCount.jsx"
 import { PublishedDate } from "../cmps/PublishedDate.jsx"
 import { bookService } from "../services/book.service.js"
@@ -20,19 +21,17 @@ export function BookDetails({ onSetSelectedBookId, selectedBookId }) {
     if (!book) return 'Loading...'
 
     const { title, subtitle, categories, authors, publishedDate, description, thumbnail, pageCount, listPrice } = book
-    const { amount, currencyCode, isOnSale } = listPrice
     const bookNumber = thumbnail.split('/').pop().split('.')[0]
 
-
     return (
-        <section className="car-details">
+        <section className="book-details">
             <h1>Book Title: {title}</h1>
             <img src={`../assets/img/BooksImages/${bookNumber}.jpg`} alt={title} />
             <h2>{subtitle}</h2>
             <h3>Categories: {categories}</h3>
             <h4>Authors: {authors}</h4>
-            <h5>Book Price: {amount} {currencyCode}</h5>
-            {isOnSale && <p style={{ color: 'red' }}>On Sale!</p>}
+            <BookPrice price={listPrice}/>
+            {listPrice.isOnSale && <p style={{ color: 'red' }}>On Sale!</p>}
             <PageCount pageCount={pageCount} />
             <PublishedDate publishedDate={publishedDate} />
             <p>{description}</p>

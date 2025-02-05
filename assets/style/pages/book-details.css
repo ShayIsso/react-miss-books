@@ -16,3 +16,11 @@
     display: block;
     margin: auto;
 }
+
+.book-price.red {
+    color: red;
+}
+
+.book-price.green {
+    color: green;
+}
