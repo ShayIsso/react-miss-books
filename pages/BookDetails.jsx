@@ -1,4 +1,5 @@
 import { BookPrice } from "../cmps/BookPrice.jsx"
+import { IsOnSale } from "../cmps/IsOnSale.jsx"
 import { PageCount } from "../cmps/PageCount.jsx"
 import { PublishedDate } from "../cmps/PublishedDate.jsx"
 import { bookService } from "../services/book.service.js"
@@ -31,7 +32,7 @@ export function BookDetails({ onSetSelectedBookId, selectedBookId }) {
             <h3>Categories: {categories}</h3>
             <h4>Authors: {authors}</h4>
             <BookPrice price={listPrice}/>
-            {listPrice.isOnSale && <p style={{ color: 'red' }}>On Sale!</p>}
+            <IsOnSale isOnSale={listPrice.isOnSale}/>
             <PageCount pageCount={pageCount} />
             <PublishedDate publishedDate={publishedDate} />
             <p>{description}</p>
