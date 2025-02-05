@@ -1,4 +1,5 @@
 import { PageCount } from "../cmps/PageCount.jsx"
+import { PublishedDate } from "../cmps/PublishedDate.jsx"
 import { bookService } from "../services/book.service.js"
 
 const { useState, useEffect } = React
@@ -33,7 +34,7 @@ export function BookDetails({ onSetSelectedBookId, selectedBookId }) {
             <h5>Book Price: {amount} {currencyCode}</h5>
             {isOnSale && <p style={{ color: 'red' }}>On Sale!</p>}
             <PageCount pageCount={pageCount} />
-            <h6>Published At: {publishedDate}</h6>
+            <PublishedDate publishedDate={publishedDate} />
             <p>{description}</p>
             <button onClick={() => onSetSelectedBookId(null)}>Back</button>
         </section>

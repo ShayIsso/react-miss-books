@@ -288,7 +288,7 @@ function _createBooks() {
                 "authors": [
                     "Danielle Steel"
                 ],
-                "publishedDate": 2018,
+                "publishedDate": 2025,
                 "description": "auctor amet nostra luctus molestie proin platea cubilia netus sed purus egestas a primis eu tristique interdum litora lorem venenatis mattis senectus",
                 "pageCount": 86,
                 "categories": [
