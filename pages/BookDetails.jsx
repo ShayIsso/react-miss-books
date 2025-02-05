@@ -17,13 +17,22 @@ export function BookDetails({ onSetSelectedBookId, selectedBookId }) {
 
     if (!book) return 'Loading...'
 
-    const { amount, currencyCode, isOnSale } = book.listPrice
+    const { title, subtitle, categories, authors, publishedDate, description, thumbnail, listPrice } = book
+    const { amount, currencyCode, isOnSale } = listPrice
+    const bookNumber =  thumbnail.split('/').pop().split('.')[0] 
+
+    
     return (
         <section className="car-details">
-            <h1>Book Title: {book.title}</h1>
+            <h1>Book Title: {title}</h1>
+            <img src={`../assets/img/BooksImages/${bookNumber}.jpg`} alt={title} />
+            <h2>{subtitle}</h2>
+            <h3>Categories: {categories}</h3>
+            <h4>Authors: {authors}</h4>
             <h5>Book Price: {amount} {currencyCode}</h5>
             {isOnSale && <p style={{ color: 'red' }}>On Sale!</p>}
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facilis quae fuga eveniet, quisquam ducimus modi optio in alias accusantium corrupti veritatis commodi tenetur voluptate deserunt nihil quibusdam. Expedita, architecto omnis?</p>
+            <h6>Published At: {publishedDate}</h6>
+            <p>{description}</p>
             <button onClick={() => onSetSelectedBookId(null)}>Back</button>
         </section>
     )
