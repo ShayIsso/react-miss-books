@@ -1,5 +1,6 @@
 import { BookPrice } from "../cmps/BookPrice.jsx"
 import { IsOnSale } from "../cmps/IsOnSale.jsx"
+import { LongTxt } from "../cmps/LongTxt.jsx"
 import { PageCount } from "../cmps/PageCount.jsx"
 import { PublishedDate } from "../cmps/PublishedDate.jsx"
 import { bookService } from "../services/book.service.js"
@@ -35,7 +36,7 @@ export function BookDetails({ onSetSelectedBookId, selectedBookId }) {
             <IsOnSale isOnSale={listPrice.isOnSale}/>
             <PageCount pageCount={pageCount} />
             <PublishedDate publishedDate={publishedDate} />
-            <p>{description}</p>
+            <LongTxt txt={description} length={100}/>
             <button onClick={() => onSetSelectedBookId(null)}>Back</button>
         </section>
     )
