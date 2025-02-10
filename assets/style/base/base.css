@@ -3,11 +3,13 @@
 }
 
 html {
+  font-family: inter, sans-serif;
 }
 
 body {
   margin: 0;
-  color: var(--gray3);
+  color: var(--clr-text-primary);
+  background: linear-gradient(to right, var(--clr-bg-main) 60%, var(--clr-bg-secondary) 40%);
 }
 
 h1,
@@ -17,7 +19,6 @@ h4,
 h5,
 h6 {
   margin: .5em 0 .5em;
-  font-family: 'Edu VIC WA NT Beginner', cursive;
 }
 
 p {
