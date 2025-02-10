@@ -18,25 +18,19 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
         setfilterByToEdit(prevFilterBy => ({ ...prevFilterBy, [field]: value }))
     }
 
-    function onSubmitForm(ev) {
-        ev.preventDefault()
-
-        onSetFilterBy(filterByToEdit)
-    }
-
     return (
         <section className="book-filter">
             <h2>Filter Our Books</h2>
-
-            <form onSubmit={onSubmitForm}>
-                <label htmlFor="txt">Title</label>
-                <input name="title" value={filterByToEdit.title} onChange={onHandleChange} type="text" id="txt" />
-
-                <label htmlFor="minPrice">Min Price</label>
-                <input name="minPrice" value={filterByToEdit.minPrice || ''} onChange={onHandleChange} type="number" id="minPrice" />
-
-                <button>Submit</button>
-            </form>
+            <div className="search-container">
+                <div className="search-field">
+                    <label htmlFor="txt">Title</label>
+                    <input className="search-input" name="title" value={filterByToEdit.title || ''} onChange={onHandleChange} type="text" id="txt" placeholder="Enter book title..." />
+                </div>
+                <div className="search-field">
+                    <label htmlFor="minPrice">Min Price</label>
+                    <input className="search-input" name="minPrice" value={filterByToEdit.minPrice || ''} onChange={onHandleChange} type="number" id="minPrice" placeholder="Enter minimum price..." />
+                </div>
+            </div>
         </section>
     )
 }

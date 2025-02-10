@@ -27,7 +27,7 @@ export function BookDetails({ onSetSelectedBookId, selectedBookId }) {
 
     return (
         <section className="book-details">
-            <h1>Book Title: {title}</h1>
+            <h1>{title}</h1>
             <img src={`../assets/img/BooksImages/${bookNumber}.jpg`} alt={title} />
             <h2>{subtitle}</h2>
             <h3>Categories: {categories}</h3>

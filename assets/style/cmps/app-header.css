@@ -1,8 +1,8 @@
 .app-header {
-    background-color: var(--clr1);
-    color: var(--clr1bg-light);
-    padding-block: .75em;
-
+    background-color: var(--clr-bg-secondary);
+    color: var(--clr-text-primary);
+    font-family: vianio, serif;
+    padding-block: 0.35em;
 }
 
 .app-header section:first-child {
@@ -11,8 +11,26 @@
     justify-content: space-between;
 }
 
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.logo img {
+    width: 50px; 
+    height: auto;
+    object-fit: contain; 
+}
 
 .app-header .app-nav {
     display: flex;
     gap: 15px;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.app-header h1 {
+    font-size: 1.5rem;
+    color: var(--clr-text-primary);
 }

@@ -41,8 +41,6 @@ export function BookIndex() {
     if (!books) return 'Loading..'
     return (
         <section className="book-index">
-            <h1>Book Index!</h1>
-
             {selectedBookId
                 ? <BookDetails onSetSelectedBookId={onSetSelectedBookId} selectedBookId={selectedBookId} />
                 : <React.Fragment>
