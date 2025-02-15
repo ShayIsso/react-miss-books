@@ -34,3 +34,9 @@
     font-size: 1.5rem;
     color: var(--clr-text-primary);
 }
+
+a.active {
+    color: rgb(219, 182, 129);
+    font-weight: 600;
+    text-decoration: underline;
+}
