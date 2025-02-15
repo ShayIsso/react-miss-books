@@ -12,10 +12,10 @@ export function App() {
 
     return (
         <Router>
-        <section className="app">
+            <section className="app">
                 <AppHeader />
 
-            <main className="main-layout">
+                <main className="main-layout">
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route path="/about" element={<About />} />
@@ -24,8 +24,8 @@ export function App() {
                         <Route path="/book/edit" element={<BookEdit />} />
                         <Route path="/book/edit/:bookId" element={<BookEdit />} />
                     </Routes>
-            </main>
-        </section>
+                </main>
+            </section>
 
         </Router>
     )

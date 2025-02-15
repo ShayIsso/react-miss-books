@@ -9,7 +9,7 @@ export const bookService = {
     get,
     remove,
     save,
-    getEmptyBook,
+    getBook,
     getDefaultFilter,
 }
 
@@ -36,20 +36,37 @@ function remove(bookId) {
     return storageService.remove(BOOK_KEY, bookId)
 }
 
-function save(bookId) {
-    if (bookId) {
-        return storageService.put(BOOK_KEY, bookId)
+function save(book) {
+    if (book.id) {
+        return storageService.put(BOOK_KEY, book)
     } else {
-        return storageService.post(BOOK_KEY, bookId)
+        return storageService.post(BOOK_KEY, book)
     }
 }
 
-function getEmptyBook(title = '', listPrice = {}) {
-    return { title, listPrice }
+function getBook(title = '', amount = '') {
+    const ctgs = ['Love', 'Fiction', 'Poetry', 'Computers', 'Religion']
+
+    return {
+        title: title,
+        subtitle: utilService.makeLorem(4),
+        authors: [utilService.makeLorem(1)],
+        publishedDate: utilService.getRandomIntInclusive(1950, 2024),
+        description: utilService.makeLorem(20),
+        pageCount: utilService.getRandomIntInclusive(20, 600),
+        categories: [ctgs[utilService.getRandomIntInclusive(0, ctgs.length - 1)]],
+        thumbnail: `../assets/img/BooksImages/15.jpg`,
+        language: "en",
+        listPrice: {
+            amount: amount,
+            currencyCode: "EUR",
+            isOnSale: Math.random() > 0.7
+        }
+    }
 }
 
 function getDefaultFilter() {
-    return { title: '', minPrice: ''}
+    return { title: '', minPrice: '' }
 }
 
 function _createBooks() {
@@ -502,13 +519,7 @@ function _createBooks() {
                 }
             }
         ]
-        
+
         utilService.saveToStorage(BOOK_KEY, books)
     }
-}
-
-function _createBook(title, listPrice) {
-    const book = getEmptyBook(title, listPrice)
-    book.id = utilService.makeId()
-    return book
 }
