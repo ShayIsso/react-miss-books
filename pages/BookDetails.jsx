@@ -6,21 +6,26 @@ import { PublishedDate } from "../cmps/PublishedDate.jsx"
 import { bookService } from "../services/book.service.js"
 
 const { useState, useEffect } = React
+const { useParams, Link } = ReactRouterDOM
 
-export function BookDetails({ onSetSelectedBookId, selectedBookId }) {
+export function BookDetails() {
 
+    const { bookId } = useParams()
     const [book, setBook] = useState(null)
 
     useEffect(() => {
         loadBook()
-    }, [])
+    }, [bookId])
 
     function loadBook() {
-        bookService.get(selectedBookId)
-            .then(book => setBook(book))
+        bookService.get(bookId)
+            .then(setBook)
+            .catch(err => {
+                console.log('Problem getting book:', err)
+            })
     }
 
-    if (!book) return 'Loading...'
+    if (!book) return <div>Loading...</div>
 
     const { title, subtitle, categories, authors, publishedDate, description, thumbnail, pageCount, listPrice } = book
     const bookNumber = thumbnail.split('/').pop().split('.')[0]
@@ -32,12 +37,12 @@ export function BookDetails({ onSetSelectedBookId, selectedBookId }) {
             <h2>{subtitle}</h2>
             <h3>Categories: {categories}</h3>
             <h4>Authors: {authors}</h4>
-            <BookPrice price={listPrice}/>
-            <IsOnSale isOnSale={listPrice.isOnSale}/>
+            <BookPrice price={listPrice} />
+            <IsOnSale isOnSale={listPrice.isOnSale} />
             <PageCount pageCount={pageCount} />
             <PublishedDate publishedDate={publishedDate} />
-            <LongTxt txt={description} length={100}/>
-            <button onClick={() => onSetSelectedBookId(null)}>Back</button>
+            <LongTxt txt={description} length={100} />
+            <button><Link to="/book">Back</Link></button>
         </section>
     )
 }
