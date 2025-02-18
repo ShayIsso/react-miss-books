@@ -1,0 +1,35 @@
+.book-edit {
+    justify-self: center;
+    font: bold 1.1rem vianio, serif;
+    margin-block-start: 30px;
+    padding: 20px;
+    background-color: var(--clr-bg-secondary);
+}
+
+.book-edit form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+    width: 400px;
+    gap: 10px;
+    margin-block-start: 20px;
+}
+
+.book-edit form input {
+    width: 200px;
+}
+
+.book-edit form button {
+    background-color: var(--clr-button);
+    justify-self: center;
+    grid-column: 1/-1;
+}
+
+.book-edit form button:hover {
+    background-color: #C49A45;
+    transform: scale(1.02); 
+}
+
+.book-edit h2 {
+    margin-block-end: 20px;
+}

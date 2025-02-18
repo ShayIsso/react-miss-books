@@ -13,3 +13,13 @@
     align-items: center;
     background-color: var(--clr1bg);
 }
+
+.book-list li button {
+    background-color: var(--clr-button); 
+    transition: background-color 300ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.book-list li button:hover {
+    background-color: #C49A45;
+    transform: scale(1.02); 
+}

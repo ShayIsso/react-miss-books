@@ -19,3 +19,7 @@
 @import "cmps/book-filter.css";
 @import "cmps/book-list.css";
 @import "cmps/book-preview.css";
+@import "cmps/AddReview.css";
+@import "cmps/star-rating.css";
+@import "cmps/StarRating.css";
+@import "cmps/BookEdit.css";
