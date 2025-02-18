@@ -8,12 +8,11 @@ const { useParams, useNavigate } = ReactRouterDOM
 
 export function BookEdit() {
 
-    const [bookToEdit, setBookToEdit] = useState(bookService.getBook())
+    const [bookToEdit, setBookToEdit] = useState(bookService.getEmptyBook())
 
     const { bookId } = useParams()
     const navigate = useNavigate()
 
-    console.log('bookId:', bookId)
 
     useEffect(() => {
         if (!bookId) return
@@ -42,8 +41,6 @@ export function BookEdit() {
         }
 
         setBookToEdit(prevBookToEdit => ({ ...prevBookToEdit, [field]: value }))
-        console.log('book to edit', bookToEdit);
-
     }
 
     function handleChangeListPrice({ target }) {
@@ -67,25 +64,18 @@ export function BookEdit() {
                 [field]: value
             }
         }))
-        console.log('book to edit', bookToEdit);
     }
 
 
     function onSaveBook(ev) {
         ev.preventDefault()
-        console.log('book to edit save', bookToEdit);
-
+        
         bookService.save(bookToEdit)
-            .then(savedBook => {
-                console.log('savedbook:', savedBook)
-
-                navigate('/book')
-                // navigate(-1)
-            })
+            .then(navigate('/book'))
             .catch(err => console.log('err:', err))
     }
 
-    const { title, listPrice } = bookToEdit
+    const { title, authors, listPrice, description, pageCount } = bookToEdit
 
     return (
         <section className="book-edit">
@@ -94,11 +84,23 @@ export function BookEdit() {
 
             <form onSubmit={onSaveBook}>
 
-                <label htmlFor="title">Title:</label>
-                <input type="text" id="title" value={title} onChange={handleChange} name="title" />
+            <label className='bold-txt' htmlFor="title">Title: </label>
+            <input onChange={handleChange} value={title} id='title' type="text" name='title' />
 
-                <label htmlFor="price">Price:</label>
-                <input type="number" id="price" value={listPrice.amount || ''} onChange={handleChangeListPrice} name="amount" />
+            <label className='bold-txt' htmlFor="authors">Authors: </label>
+            <input onChange={handleChange} value={authors} id='authors' type="text" name='authors' />
+
+            <label className='bold-txt' htmlFor="description">Description: </label>
+            <input onChange={handleChange} value={description} id='description' type="text" name='description' />
+
+            <label className='bold-txt' htmlFor="pages">Number of pages: </label>
+            <input onChange={handleChange} value={pageCount} id='pages' type="number" name='pageCount' />
+
+            <label className='bold-txt' htmlFor="price">Price: </label>
+            <input onChange={handleChangeListPrice} value={listPrice.amount} id='price' type="number" name='amount' />
+
+            <label className='bold-txt' htmlFor="isOnSale">On Sale: </label>
+            <input onChange={handleChangeListPrice} checked={listPrice.isOnSale} id='isOnSale' type="checkbox" name='isOnSale' />
 
                 <button>Save</button>
             </form>

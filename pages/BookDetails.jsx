@@ -32,6 +32,14 @@ export function BookDetails() {
 
     return (
         <section className="book-details">
+            <nav className='book-details-nav'>
+                <Link to={`/book/${book.prevBookId}`}>
+                    <button>{'<-'}</button>
+                </Link>
+                <Link to={`/book/${book.nextBookId}`}>
+                    <button>{'->'}</button>
+                </Link>
+            </nav>
             <h1>{title}</h1>
             <img src={`../assets/img/BooksImages/${bookNumber}.jpg`} alt={title} />
             <h2>{subtitle}</h2>
