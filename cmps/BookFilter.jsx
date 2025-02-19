@@ -1,13 +1,14 @@
 
-const { useState, useEffect } = React
+import { utilService } from "../services/util.service.js"
+const { useState, useEffect, useRef } = React
 
 export function BookFilter({ filterBy, onSetFilterBy }) {
 
-    const [filterByToEdit, setfilterByToEdit] = useState({ ...filterBy })
-    // console.log('filterByToEdit:', filterByToEdit)
+    const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
+    const onSetFilterDebounced = useRef(utilService.debounce(onSetFilterBy,500))
 
     useEffect(() => {
-        onSetFilterBy(filterByToEdit)
+        onSetFilterDebounced.current(filterByToEdit)
     }, [filterByToEdit])
 
     function onHandleChange(ev) {
