@@ -1,3 +1,4 @@
+import { AddGoogleBook } from "../cmps/AddGoogleBook.jsx"
 import { bookService } from "../services/book.service.js"
 
 
@@ -82,6 +83,8 @@ export function BookEdit() {
 
             <h1>{bookId ? 'Book Edit' : 'Book Add'}</h1>
 
+            {!bookId && <AddGoogleBook />}
+
             <form onSubmit={onSaveBook}>
 
             <label className='bold-txt' htmlFor="title">Title: </label>
@@ -94,7 +97,7 @@ export function BookEdit() {
             <input onChange={handleChange} value={description} id='description' type="text" name='description' />
 
             <label className='bold-txt' htmlFor="pages">Number of pages: </label>
-            <input onChange={handleChange} value={pageCount} id='pages' type="number" name='pageCount' />
+            <input onChange={handleChange} value={pageCount || ''} id='pages' type="number" name='pageCount' />
 
             <label className='bold-txt' htmlFor="price">Price: </label>
             <input onChange={handleChangeListPrice} value={listPrice.amount} id='price' type="number" name='amount' />
