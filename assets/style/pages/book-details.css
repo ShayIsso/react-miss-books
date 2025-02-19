@@ -24,3 +24,9 @@
 .book-price .green {
     color: green;
 }
+
+.brake-line {
+    height: 2px;
+    background: black;
+    width: 100%;
+}

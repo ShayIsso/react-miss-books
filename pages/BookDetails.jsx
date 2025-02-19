@@ -63,7 +63,6 @@ export function BookDetails() {
     if (!book) return <div>Loading...</div>
 
     const { title, subtitle, categories, authors, publishedDate, description, thumbnail, pageCount, listPrice } = book
-    const bookNumber = thumbnail.split('/').pop().split('.')[0]
 
     return (
         <section className="book-details">
@@ -76,7 +75,7 @@ export function BookDetails() {
                 </Link>
             </nav>
             <h1>{title}</h1>
-            <img src={`../assets/img/BooksImages/${bookNumber}.jpg`} alt={title} />
+            <img src={book.thumbnail} alt={title} />
             <h2>{subtitle}</h2>
             <h3>Categories: {categories}</h3>
             <h4>Authors: {authors}</h4>
