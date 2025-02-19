@@ -11,7 +11,7 @@
 
 .add-review .review-modal {
     position: relative;
-    background-color: #fefefe;
+    background-color: var(--clr-bg-secondary);
     margin: 5% auto 15% auto;
     width: 30%;
     text-align: center;
@@ -20,7 +20,8 @@
 }
 
 .review-modal h1 {
-    background-color: #bb8082;
+    background-color: var(--clr-button);
+    font-family: vianio, serif;
     color: white;
     padding: 10px;
     font-size: 1.5rem;
@@ -50,7 +51,7 @@
 
 .review-container {
     width: 90%;
-    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-family: vianio, serif;
 }
 
 .review-details {
