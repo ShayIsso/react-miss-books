@@ -13,8 +13,9 @@ export const bookService = {
     save,
     addGoogleBook,
     getEmptyBook,
-    getDefaultFilter, 
-    getGoogleBooks  
+    getDefaultFilter,
+    getFilterFromSearchParams,
+    getGoogleBooks,
 }
 
 
@@ -92,6 +93,13 @@ function getGoogleBooks(bookName) { // tyg
             utilService.saveToStorage(CACHE_STORAGE_KEY, gCache)
             return books
         })
+}
+
+function getFilterFromSearchParams(searchParams) {
+    const title = searchParams.get('title')     
+    const minPrice = searchParams.get('minPrice') || ''
+
+    return { title, minPrice }
 }
 
 // ~~~~~~~~~~~~~~~~LOCAL FUNCTIONS~~~~~~~~~~~~~~~~~~~

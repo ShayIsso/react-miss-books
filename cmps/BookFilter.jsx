@@ -16,7 +16,7 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
         // console.log('field:', field)
 
         if (type === 'number') value = +value
-        setfilterByToEdit(prevFilterBy => ({ ...prevFilterBy, [field]: value }))
+        setFilterByToEdit(prevFilterBy => ({ ...prevFilterBy, [field]: value }))
     }
 
     return (

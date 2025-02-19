@@ -84,6 +84,8 @@ export function BookDetails() {
             <PageCount pageCount={pageCount} />
             <PublishedDate publishedDate={publishedDate} />
             <LongTxt txt={description} length={100} />
+            
+            <hr className='brake-line' />
 
             <button onClick={onToggleReviewModal}>Add Review</button>
             {isShowReviewModal && (

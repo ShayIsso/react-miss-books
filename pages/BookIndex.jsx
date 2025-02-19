@@ -5,14 +5,18 @@ import { bookService } from "../services/book.service.js"
 
 const { useState, useEffect } = React
 const { Link } = ReactRouterDOM
+const { useSearchParams } = ReactRouterDOM
 
 
 export function BookIndex() {
 
+    const [searchParams, setSearchParams] = useSearchParams()
+
     const [books, setBooks] = useState(null)
-    const [filterBy, setFilterBy] = useState(bookService.getDefaultFilter())
+    const [filterBy, setFilterBy] = useState(bookService.getFilterFromSearchParams(searchParams))
 
     useEffect(() => {
+        setSearchParams(filterBy)
         loadBooks()
     }, [filterBy])
 
